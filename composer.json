@@ -15,14 +15,27 @@
             "AnimeDb\\Bundle\\FormTypeImageBundle\\Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "weixiyen/jquery-filedrop",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/weixiyen/jquery-filedrop.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "weixiyen/jquery-filedrop": "dev-master"
     },
     "require-dev": {
-        "symfony/dependency-injection": "2.8.*",
-        "symfony/http-kernel": "2.8.*",
-        "symfony/config": "2.8.*",
-        "symfony/form": "2.8.*"
+        "symfony/symfony": "2.8.*",
+        "sensio/framework-extra-bundle": "3.0.*"
     },
     "minimum-stability": "dev"
 }
