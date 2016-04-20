@@ -1,0 +1,13 @@
+{
+  "name": "anime-db-form-type-image-bundle",
+  "description": "Image upload form type",
+  "version": "0.0.1",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-cssmin": "^0.12.1"
+  }
+}
