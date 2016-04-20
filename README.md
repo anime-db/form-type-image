@@ -1,2 +1,1 @@
-# form-type-image
-Image upload form type
+# Image upload form type
