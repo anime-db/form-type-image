@@ -1,0 +1,10 @@
+services:
+    anime_db.form.type.image:
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Image
+        tags:
+            - { name: form.type, alias: image }
+
+    anime_db.form.type.image_collection:
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection
+        tags:
+            - { name: form.type, alias: image_collection }

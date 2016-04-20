@@ -20,8 +20,9 @@
     },
     "require-dev": {
         "symfony/dependency-injection": "2.8.*",
+        "symfony/http-kernel": "2.8.*",
         "symfony/config": "2.8.*",
-        "symfony/http-kernel": "2.8.*"
+        "symfony/form": "2.8.*"
     },
     "minimum-stability": "dev"
 }
