@@ -4,10 +4,11 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         project: {
-            css: ['src/Resources/public/css/'],
-            js: ['src/Resources/public/js/'],
-            jsSrc: ['src/Resources/public/js/src/'],
-            scss: ['src/Resources/public/scss/'],
+            css: 'src/Resources/public/css/',
+            js: 'src/Resources/public/js/',
+            jsSrc: 'src/Resources/public/js/src/',
+            scss: 'src/Resources/public/scss/',
+            filedrop: '<%= project.js %>/vendor/weixiyen/jquery-filedrop/jquery.filedrop.js',
             jsFiles: [
                 '<%= project.jsSrc %>/common.js',
                 '<%= project.jsSrc %>/image.js',
@@ -33,7 +34,7 @@ module.exports = function(grunt) {
         },
         concat: {
             js: {
-                src: ['<%= project.js %>/vendor/weixiyen/jquery-filedrop/jquery.filedrop.js', '<%= project.jsFiles %>'],
+                src: ['<%= project.filedrop %>', '<%= project.jsFiles %>'],
                 dest: '<%= project.js %>upload_image.js'
             }
         },
