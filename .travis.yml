@@ -13,6 +13,8 @@ install:
     - composer self-update
     - composer --version
     - composer install --dev --prefer-dist
+    - npm install
+    - grunt
 
 script:
     - phpunit --verbose --coverage-clover=coverage.clover
