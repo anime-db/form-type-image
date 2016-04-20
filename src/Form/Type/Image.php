@@ -29,7 +29,6 @@ class Image extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['image_url'] = null;
         $entity = $form->getParent()->getData();
         if ($entity instanceof ImageInterface) {
             $view->vars['image_url'] = $entity->getImageWebPath();
@@ -44,6 +43,7 @@ class Image extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'image_url' => null,
             'attr' => [
                 'class' => ''
             ]
