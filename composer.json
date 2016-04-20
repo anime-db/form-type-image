@@ -5,6 +5,26 @@
     "description": "Image upload form type",
     "keywords": ["php", "form", "image"],
     "homepage": "http://github.com/anime-db/form-type-image-bundle",
+    "authors" : [
+        {
+            "name" : "Anime DB",
+            "homepage" : "http://anime-db.org"
+        },
+        {
+            "name" : "Peter Gribanov",
+            "email" : "info@peter-gribanov.ru",
+            "homepage" : "http://peter-gribanov.ru",
+            "role" : "Developer"
+        },
+        {
+            "name" : "Anime DB Community",
+            "homepage" : "https://github.com/anime-db/catalog-online/graphs/contributors"
+        }
+    ],
+    "support" : {
+        "email" : "support@anime-db.org",
+        "issues" : "https://github.com/anime-db/catalog-online/issues"
+    },
     "autoload": {
         "psr-4": {
             "AnimeDb\\Bundle\\FormTypeImageBundle\\": "src/"
