@@ -1,0 +1,22 @@
+{
+    "name": "anime-db/form-type-image-bundle",
+    "license": "MIT",
+    "type": "library",
+    "description": "Image upload form type",
+    "keywords": ["php", "form", "image"],
+    "homepage": "http://github.com/anime-db/form-type-image-bundle",
+    "autoload": {
+        "psr-4": {
+            "AnimeDb\\Bundle\\FormTypeImageBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AnimeDb\\Bundle\\FormTypeImageBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "minimum-stability": "dev"
+}
