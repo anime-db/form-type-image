@@ -13,6 +13,7 @@ install:
     - composer self-update
     - composer --version
     - composer install --dev --prefer-dist
+    - gem install sass
     - npm install
     - grunt
 
