@@ -6,8 +6,9 @@ services:
 
     anime_db.form.type.image_collection:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection
+        arguments: [ '%upload.files_limit%' ]
         tags:
-            - { name: form.type, alias: image_collection }
+            - { name: form.type, alias: image_collection }upload.
 
     anime_db.uploader:
         class: AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader

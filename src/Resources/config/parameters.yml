@@ -1,3 +1,4 @@
 parameters:
+    upload.files_limit: 10
     upload.web_path: '/upload/'
     upload.dir: '%kernel.root_dir%/../web/%upload.web_path%'

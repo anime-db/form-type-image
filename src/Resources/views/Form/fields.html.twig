@@ -27,7 +27,7 @@
         data-generate-token="{{ path('anime_db_form_generate_token') }}"
         data-drop-block=".form-image-collection__drop-block"
         data-container=".form-image-collection__container"
-        data-upload-limit="10"
+        data-upload-limit="{{ upload_files_limit }}"
     >
         <div class="form-image-collection__drop-block">
             <button type="button" class="btn btn-primary glyphicon glyphicon-cloud-upload"></button>

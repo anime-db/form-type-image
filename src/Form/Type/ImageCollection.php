@@ -11,6 +11,7 @@
 namespace AnimeDb\Bundle\FormTypeImageBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ImageCollection
@@ -18,6 +19,29 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
  */
 class ImageCollection extends CollectionType
 {
+    /**
+     * @var int
+     */
+    protected $files_limit;
+
+    /**
+     * @param int $files_limit
+     */
+    public function __construct($files_limit)
+    {
+        $this->files_limit = $files_limit;
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'upload_files_limit' => $this->files_limit
+        ]);
+    }
+
     /**
      * @return string
      */
