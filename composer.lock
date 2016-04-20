@@ -4,21 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f7e92c429ac9b79a35d376d4fcd70e00",
-    "content-hash": "6cb92208e61073cd03e9b5497b72091f",
-    "packages": [
-        {
-            "name": "weixiyen/jquery-filedrop",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/weixiyen/jquery-filedrop.git",
-                "reference": "master"
-            },
-            "type": "library",
-            "time": "2014-03-14 00:49:10"
-        }
-    ],
+    "hash": "3a62bcac52a540e866c233f8b31242eb",
+    "content-hash": "1d07aeec77e071628fe844410c7999ed",
+    "packages": [],
     "packages-dev": [
         {
             "name": "doctrine/annotations",
@@ -1134,12 +1122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "44e3664ac920aad8284d70813d025ab27fa099e5"
+                "reference": "d1038c34219aaf2d4947b0dc13ef781798e5c392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/44e3664ac920aad8284d70813d025ab27fa099e5",
-                "reference": "44e3664ac920aad8284d70813d025ab27fa099e5",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/d1038c34219aaf2d4947b0dc13ef781798e5c392",
+                "reference": "d1038c34219aaf2d4947b0dc13ef781798e5c392",
                 "shasum": ""
             },
             "require": {
@@ -1260,7 +1248,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-04-19 14:06:07"
+            "time": "2016-04-20 11:30:10"
         },
         {
             "name": "twig/twig",
@@ -1327,9 +1315,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "weixiyen/jquery-filedrop": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
