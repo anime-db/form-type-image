@@ -34,7 +34,7 @@ class Image extends AbstractType
             $view->vars['image_url'] = $entity->getImageWebPath();
         }
 
-        $view->vars['attr']['class'] = 'upload-image__input '.$view->vars['attr']['class'];
+        $view->vars['attr']['class'] = 'form-image-upload-__input '.$view->vars['attr']['class'];
     }
 
     /**

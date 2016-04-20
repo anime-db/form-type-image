@@ -1,0 +1,24 @@
+.form-image-collection {
+  &__drop-block {
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #e9e9e9;
+    position: relative;
+    display: inline-block;
+  }
+  &__help {
+    float: right;
+    margin: 7px 10px;
+  }
+  input[type=file]#{&}__file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 50px 0 0 250px;
+    width: 100%;
+    cursor: pointer;
+  }
+}

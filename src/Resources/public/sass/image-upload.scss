@@ -1,0 +1,66 @@
+.form-image-upload {
+  height: $upload_image_height;
+  max-width: $upload_image_width;
+  padding: 1px;
+  background: #e9e9e9;
+  text-align: center;
+  position: relative;
+  &__input {
+    display: none;
+  }
+  &__help,
+  &__button {
+    z-index: 2;
+  }
+  &__help {
+    margin-top: 80px;
+    font-size: 0.9em;
+    position: relative;
+  }
+  &__image-container {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    z-index: 1;
+    opacity: 0.4;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    &:before {
+      content: ' ';
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    img[src=\/]#{&}__image {
+      display: none;
+    }
+  }
+  &__image {
+    max-width: $upload_image_width - 24;
+    max-height: $upload_image_height - 24;
+    vertical-align: middle;
+  }
+  input[type=file]#{&}__file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: $upload_image_height 0 0 $upload_image_width;
+    width: 100%;
+    z-index: 3;
+    cursor: pointer;
+  }
+  &_dragging {
+    background: #d9d9d9;
+  }
+  &__alert {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
