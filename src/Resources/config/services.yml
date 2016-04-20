@@ -8,3 +8,7 @@ services:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection
         tags:
             - { name: form.type, alias: image_collection }
+
+    anime_db.uploader:
+        class: AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader
+        arguments: [ '%upload.dir%', '%upload.web_path%' ]
