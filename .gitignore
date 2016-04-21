@@ -1,4 +1,5 @@
 /vendor/
 /node_modules/
+/.sass-cache/
 src/Resources/public/css/UploadImage.css.map
 composer.lock
