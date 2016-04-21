@@ -11,8 +11,8 @@ module.exports = function(grunt) {
             jsFiles: [
                 '<%= project.js %>vendor/weixiyen/jquery-filedrop/jquery.filedrop.js',
                 '<%= project.jsSrc %>common.js',
-                '<%= project.jsSrc %>image.js',
-                '<%= project.jsSrc %>image_collection.js'
+                '<%= project.jsSrc %>UploadImage.js',
+                '<%= project.jsSrc %>UploadImageCollection.js'
             ]
         },
         sass: {
@@ -21,21 +21,21 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%= project.css %>upload_image.css': '<%= project.scss %>main.scss'
+                    '<%= project.css %>UploadImage.css': '<%= project.scss %>main.scss'
                 }
             }
         },
         cssmin: {
             default: {
                 files: {
-                    '<%= project.css %>upload_image.min.css': '<%= project.css %>upload_image.css'
+                    '<%= project.css %>UploadImage.min.css': '<%= project.css %>UploadImage.css'
                 }
             }
         },
         concat: {
             js: {
                 src: '<%= project.jsFiles %>',
-                dest: '<%= project.js %>upload_image.js'
+                dest: '<%= project.js %>UploadImage.js'
             }
         },
         uglify: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     mangle: false // do not change the names of the functions in the minification
                 },
                 files: {
-                    '<%= project.js %>upload_image.min.js': '<%= project.js %>upload_image.js'
+                    '<%= project.js %>UploadImage.min.js': '<%= project.js %>UploadImage.js'
                 }
             }
         }

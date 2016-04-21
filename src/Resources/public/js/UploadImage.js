@@ -567,5 +567,27 @@
 
 })(jQuery);
 
+/**
+ * Created by PGribanov on 16.11.2015.
+ */
+
+var Container = {};
+
+$(function(){
+    Container.FormToken = new FormToken();
+
+    Container.Controller = new Controller();
+    Container.Controller.addControl('form-image', new FormImage());
+    Container.Controller.addControl('form-image-collection', new FormImageCollection());
+    Container.Controller.bind();
+
+    // bind on add element
+    $('div[id^=sonata-ba-field-container-]').on('sonata.add_element', function(event) {
+        Container.Controller.bind(event.target);
+    });
+    $('div[id$=collection__container]').on('sonata-collection-item-added', function(event) {
+        Container.Controller.bind(event.target);
+    });
+});
 
 

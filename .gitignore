@@ -1,4 +1,4 @@
 /vendor/
 /node_modules/
-src/Resources/public/css/upload_image.css.map
+src/Resources/public/css/UploadImage.css.map
 composer.lock
