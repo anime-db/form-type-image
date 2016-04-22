@@ -24,6 +24,19 @@ use Symfony\Component\Validator\Constraints\Image;
 class ImageCollectionHandler extends AbstractType
 {
     /**
+     * @var int
+     */
+    protected $files_limit;
+
+    /**
+     * @param int $files_limit
+     */
+    public function __construct($files_limit)
+    {
+        $this->files_limit = $files_limit;
+    }
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -32,7 +45,7 @@ class ImageCollectionHandler extends AbstractType
         $builder->add('files', 'file', [
             'multiple' => true,
             'constraints' => [
-                new Count(['max' => 10]),
+                new Count(['max' => $this->files_limit]),
                 new All([
                     new NotBlank(),
                     new Image([
