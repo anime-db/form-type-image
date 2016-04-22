@@ -1,11 +1,11 @@
 services:
     anime_db.form.type.image:
-        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Image
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageType
         tags:
             - { name: form.type, alias: image }
 
     anime_db.form.type.image_collection:
-        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollectionType
         arguments: [ '%upload.files_limit%' ]
         tags:
             - { name: form.type, alias: image_collection }

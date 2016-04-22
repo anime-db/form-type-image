@@ -20,7 +20,7 @@ use AnimeDb\Bundle\FormTypeImageBundle\Entity\ImageInterface;
  * Image form field
  * @package AnimeDb\Bundle\FormTypeImageBundle\Form\Type
  */
-class Image extends AbstractType
+class ImageType extends AbstractType
 {
     /**
      * @param FormView $view
