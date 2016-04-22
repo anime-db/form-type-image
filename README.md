@@ -30,3 +30,19 @@ public function registerBundles()
     );
 }
 ```
+
+## Configuration
+
+Default config
+
+```yml
+anime_db_cache_time_keeper:
+    web_path: '/upload/' # Upload images directory: %kernel.root_dir%/../web/upload/
+    constraint:
+        files_limit: 10  # Limiting the number of simultaneous file upload
+        max_size: null   # Max file size. Example: 2M
+        min_width:  0    # Minimum image width
+        min_height: 0    # Minimum image height
+        max_width:  0    # Maximum image width
+        max_height: 0    # Maximum image height
+```
