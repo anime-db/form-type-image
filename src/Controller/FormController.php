@@ -21,6 +21,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Image;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Images;
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler;
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageHandler;
 
 /**
  * FormController
@@ -45,9 +47,7 @@ class FormController extends Controller
         $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Image();
         $form = $this
-            ->createFormBuilder($image)
-            ->add('file', 'file')
-            ->getForm()
+            ->createForm(new ImageHandler(), $image)
             ->handleRequest($request);
 
         if (!$form->isValid()) {
@@ -91,15 +91,7 @@ class FormController extends Controller
         $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Images();
         $form = $this
-            ->createFormBuilder($image)
-            ->add('files', 'file', [
-                'multiple' => true,
-                'attr' => [
-                    'accept' => 'image/*',
-                    'multiple' => 'multiple',
-                ]
-            ])
-            ->getForm()
+            ->createForm(new ImageCollectionHandler(), $image)
             ->handleRequest($request);
 
         if ($form->isValid()) {

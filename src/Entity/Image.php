@@ -10,7 +10,6 @@
 
 namespace AnimeDb\Bundle\FormTypeImageBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -20,15 +19,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Image
 {
     /**
-     * @Assert\NotBlank()
-     * @Assert\Image(
-     *     maxSize = "2M",
-     *     minWidth = 100,
-     *     maxWidth = 2000,
-     *     minHeight = 100,
-     *     maxHeight = 2000
-     * )
-     *
      * @var UploadedFile
      */
     protected $file;
