@@ -47,7 +47,7 @@ class FormController extends Controller
         $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Image();
         $form = $this
-            ->createForm(new ImageHandler(), $image)
+            ->createForm('anime_db_image_handler', $image)
             ->handleRequest($request);
 
         if (!$form->isValid()) {
@@ -91,7 +91,7 @@ class FormController extends Controller
         $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Images();
         $form = $this
-            ->createForm(new ImageCollectionHandler(), $image)
+            ->createForm('anime_db_image_collection_handler', $image)
             ->handleRequest($request);
 
         if ($form->isValid()) {

@@ -10,6 +10,16 @@ services:
         tags:
             - { name: form.type, alias: image_collection }
 
+    anime_db.form.type.image_handler:
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageHandler
+        tags:
+            - { name: form.type, alias: anime_db_image_handler }
+
+    anime_db.form.type.image_collection_handler:
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler
+        tags:
+            - { name: form.type, alias: anime_db_image_collection_handler }
+
     anime_db.uploader:
         class: AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader
         arguments: [ '%upload.dir%', '%upload.web_path%' ]
