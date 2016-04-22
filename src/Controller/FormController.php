@@ -11,6 +11,7 @@
 namespace AnimeDb\Bundle\FormTypeImageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,8 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Image;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Images;
-use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler;
-use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageHandler;
 
 /**
  * FormController
@@ -50,17 +49,10 @@ class FormController extends Controller
             ->createForm('anime_db_image_handler', $image)
             ->handleRequest($request);
 
-        if (!$form->isValid()) {
-            $error = $this->get('translator')->trans('word.error.failed_upload_image');
-            if ($form->getErrors()->count()) {
-                $error = $form->getErrors()->current()->getMessage();
-            } elseif ($form->get('file')->getErrors()->count()) {
-                $error = $form->get('file')->getErrors()->current()->getMessage();
-            }
-
+        if ($form->isValid()) {
             return new JsonResponse([
                 'status' => 0,
-                'message' => $error
+                'message' => $this->getError($form, 'file', 'word.error.failed_upload_image')
             ]);
         }
 
@@ -95,16 +87,9 @@ class FormController extends Controller
             ->handleRequest($request);
 
         if ($form->isValid()) {
-            $error = $this->get('translator')->trans('word.error.failed_upload_images');
-            if ($form->getErrors()->count()) {
-                $error = $form->getErrors()->current()->getMessage();
-            } elseif ($form->get('files')->getErrors()->count()) {
-                $error = $form->get('files')->getErrors()->current()->getMessage();
-            }
-
             return new JsonResponse([
                 'status' => 0,
-                'message' => $error
+                'message' => $this->getError($form, 'files', 'word.error.failed_upload_images')
             ]);
         }
 
@@ -145,5 +130,24 @@ class FormController extends Controller
         /* @var $csrf CsrfTokenManagerInterface */
         $csrf = $this->get('security.csrf.token_manager');
         return new Response($csrf->refreshToken($token_id));
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param string $field
+     * @param string $default_error
+     *
+     * @return string
+     */
+    protected function getError(FormInterface $form, $field, $default_error)
+    {
+        $error = '';
+        if ($form->getErrors()->count()) {
+            $error = $form->getErrors()->current()->getMessage();
+        } elseif ($form->get($field)->getErrors()->count()) {
+            $error = $form->get($field)->getErrors()->current()->getMessage();
+        }
+
+        return $error ?: $this->get('translator')->trans($default_error);
     }
 }
