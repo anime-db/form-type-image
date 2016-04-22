@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -41,6 +42,7 @@ class FormController extends Controller
      */
     public function uploadImageAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Image();
         $form = $this
             ->createFormBuilder($image)
@@ -86,6 +88,7 @@ class FormController extends Controller
      */
     public function uploadImagesAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         $image = new Images();
         $form = $this
             ->createFormBuilder($image)
@@ -146,6 +149,7 @@ class FormController extends Controller
      */
     public function generateTokenAction($token_id)
     {
+        $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
         /* @var $csrf CsrfTokenManagerInterface */
         $csrf = $this->get('security.csrf.token_manager');
         return new Response($csrf->refreshToken($token_id));
