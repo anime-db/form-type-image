@@ -6,18 +6,30 @@ services:
 
     anime_db.form.type.image_collection:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollectionType
-        arguments: [ '%anime_db.upload_image.files_limit%' ]
+        arguments: [ '%anime_db.upload_image.constraint.files_limit%' ]
         tags:
             - { name: form.type, alias: image_collection }
 
     anime_db.form.type.image_handler:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageHandler
+        arguments:
+            - '%anime_db.upload_image.constraint.max_size%'
+            - '%anime_db.upload_image.constraint.min_width%'
+            - '%anime_db.upload_image.constraint.min_height%'
+            - '%anime_db.upload_image.constraint.max_width%'
+            - '%anime_db.upload_image.constraint.max_height%'
         tags:
             - { name: form.type, alias: anime_db_image_handler }
 
     anime_db.form.type.image_collection_handler:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler
-        arguments: [ '%anime_db.upload_image.files_limit%' ]
+        arguments:
+            - '%anime_db.upload_image.constraint.max_size%'
+            - '%anime_db.upload_image.constraint.min_width%'
+            - '%anime_db.upload_image.constraint.min_height%'
+            - '%anime_db.upload_image.constraint.max_width%'
+            - '%anime_db.upload_image.constraint.max_height%'
+            - '%anime_db.upload_image.constraint.files_limit%'
         tags:
             - { name: form.type, alias: anime_db_image_collection_handler }
 

@@ -1,4 +1,9 @@
 parameters:
-    anime_db.upload_image.files_limit: 10
     anime_db.upload_image.web_path: '/upload/'
     anime_db.upload_image.dir: '%kernel.root_dir%/../web/%upload.web_path%'
+    anime_db.upload_image.constraint.files_limit: 10
+    anime_db.upload_image.constraint.max_size: null
+    anime_db.upload_image.constraint.min_width: null
+    anime_db.upload_image.constraint.min_height: null
+    anime_db.upload_image.constraint.max_width: null
+    anime_db.upload_image.constraint.max_height: null

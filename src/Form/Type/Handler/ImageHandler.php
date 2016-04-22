@@ -22,6 +22,29 @@ use Symfony\Component\Validator\Constraints\Image;
 class ImageHandler extends AbstractType
 {
     /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * @param string $max_size
+     * @param int $min_width
+     * @param int $min_height
+     * @param int $max_width
+     * @param int $max_height
+     */
+    public function __construct($max_size, $min_width, $min_height, $max_width, $max_height)
+    {
+        $this->options = array_filter([
+            'maxSize' => $max_size,
+            'minWidth' => $min_width,
+            'minHeight' => $min_height,
+            'maxWidth' => $max_width,
+            'maxHeight' => $max_height
+        ]);
+    }
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -30,13 +53,7 @@ class ImageHandler extends AbstractType
         $builder->add('file', 'file', [
             'constraints' => [
                 new NotBlank(),
-                new Image([
-                    'maxSize' => '2M',
-                    'minWidth' => 100,
-                    'maxWidth' => 2000,
-                    'minHeight' => 100,
-                    'maxHeight' => 2000
-                ])
+                new Image($this->options)
             ]
         ]);
     }
