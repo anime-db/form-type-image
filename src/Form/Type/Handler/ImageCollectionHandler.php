@@ -46,12 +46,4 @@ class ImageCollectionHandler extends AbstractType
             ]
         ]);
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'anime_db_image_collection_handler';
-    }
 }
