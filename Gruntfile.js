@@ -10,9 +10,7 @@ module.exports = function(grunt) {
             scss: 'src/Resources/public/scss/',
             jsFiles: [
                 '<%= project.js %>vendor/weixiyen/jquery-filedrop/jquery.filedrop.js',
-                '<%= project.jsSrc %>common.js',
-                '<%= project.jsSrc %>UploadImage.js',
-                '<%= project.jsSrc %>UploadImageCollection.js'
+                '<%= project.jsSrc %>common.js'
             ]
         },
         sass: {
@@ -46,9 +44,6 @@ module.exports = function(grunt) {
                 }
             },
             build: {
-                options: {
-                    mangle: false // do not change the names of the functions in the minification
-                },
                 files: {
                     '<%= project.js %>UploadImage.min.js': '<%= project.js %>UploadImage.js'
                 }
