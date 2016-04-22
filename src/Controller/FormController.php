@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader;
@@ -56,13 +57,11 @@ class FormController extends Controller
             ]);
         }
 
-        /* @var $uploader Uploader */
-        $uploader = $this->get('anime_db.uploader');
-        $filename = $uploader->upload($image->getFile());
+        $filename = $this->getUploader()->upload($image->getFile());
         return new JsonResponse([
             'status' => 1,
             'filename' => $filename,
-            'web_path' => $uploader->getWebPath().$filename
+            'web_path' => $this->getUploader()->getWebPath().$filename
         ]);
     }
 
@@ -93,15 +92,12 @@ class FormController extends Controller
             ]);
         }
 
-        /* @var $uploader Uploader */
-        $uploader = $this->get('anime_db.uploader');
-
         $files = [];
         foreach ($image->getFiles() as $file) {
-            $filename = $uploader->upload($file);
+            $filename = $this->getUploader()->upload($file);
             $files[] = [
                 'filename' => $filename,
-                'web_path' => $uploader->getWebPath().$filename
+                'web_path' => $this->getUploader()->getWebPath().$filename
             ];
         }
 
@@ -127,9 +123,7 @@ class FormController extends Controller
     public function generateTokenAction($token_id)
     {
         $this->denyAccessUnlessGranted(AuthenticatedVoter::IS_AUTHENTICATED_REMEMBERED);
-        /* @var $csrf CsrfTokenManagerInterface */
-        $csrf = $this->get('security.csrf.token_manager');
-        return new Response($csrf->refreshToken($token_id));
+        return new Response($this->getTokenManager()->refreshToken($token_id));
     }
 
     /**
@@ -148,6 +142,30 @@ class FormController extends Controller
             $error = $form->get($field)->getErrors()->current()->getMessage();
         }
 
-        return $error ?: $this->get('translator')->trans($default_error);
+        return $error ?: $this->getTranslator()->trans($default_error);
+    }
+
+    /**
+     * @return Uploader
+     */
+    protected function getUploader()
+    {
+        return $this->get('anime_db.uploader');
+    }
+
+    /**
+     * @return CsrfTokenManagerInterface
+     */
+    protected function getTokenManager()
+    {
+        return $this->get('security.csrf.token_manager');
+    }
+
+    /**
+     * @return TranslatorInterface
+     */
+    protected function getTranslator()
+    {
+        return $this->get('translator');
     }
 }
