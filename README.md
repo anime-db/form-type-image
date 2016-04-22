@@ -46,3 +46,26 @@ anime_db_cache_time_keeper:
         max_width:  0    # Maximum image width
         max_height: 0    # Maximum image height
 ```
+
+## Usage
+
+From Symfony 2
+
+```php
+$form = $this
+    ->createFormBuilder()
+    ->add('cover', 'image')
+    ->add('covers', 'image_collection');
+```
+
+From Symfony 3
+
+```php
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Image;
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection;
+
+$form = $this
+    ->createFormBuilder()
+    ->add('cover', Image::class)
+    ->add('covers', ImageCollection::class);
+```
