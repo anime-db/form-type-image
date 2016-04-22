@@ -1,4 +1,4 @@
 parameters:
-    upload.files_limit: 10
-    upload.web_path: '/upload/'
-    upload.dir: '%kernel.root_dir%/../web/%upload.web_path%'
+    anime_db.upload_image.files_limit: 10
+    anime_db.upload_image.web_path: '/upload/'
+    anime_db.upload_image.dir: '%kernel.root_dir%/../web/%upload.web_path%'

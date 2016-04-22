@@ -6,7 +6,7 @@ services:
 
     anime_db.form.type.image_collection:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollectionType
-        arguments: [ '%upload.files_limit%' ]
+        arguments: [ '%anime_db.upload_image.files_limit%' ]
         tags:
             - { name: form.type, alias: image_collection }
 
@@ -17,10 +17,10 @@ services:
 
     anime_db.form.type.image_collection_handler:
         class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler
-        arguments: [ '%upload.files_limit%' ]
+        arguments: [ '%anime_db.upload_image.files_limit%' ]
         tags:
             - { name: form.type, alias: anime_db_image_collection_handler }
 
     anime_db.uploader:
         class: AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader
-        arguments: [ '%upload.dir%', '%upload.web_path%' ]
+        arguments: [ '%anime_db.upload_image.dir%', '%anime_db.upload_image.web_path%' ]
