@@ -29,8 +29,11 @@ class ImageType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $entity = $form->getParent()->getData();
-        if ($entity instanceof ImageInterface) {
+        $entity = $form->getRoot()->getData();
+
+        if (is_callable($view->vars['image_url_callback'])) {
+            $view->vars['image_url'] = call_user_func($view->vars['image_url_callback'], $entity);
+        } elseif ($entity instanceof ImageInterface) {
             $view->vars['image_url'] = $entity->getImageWebPath();
         }
 
@@ -44,6 +47,7 @@ class ImageType extends AbstractType
     {
         $resolver->setDefaults([
             'image_url' => null,
+            'image_url_callback' => null,
             'attr' => [
                 'class' => ''
             ]
