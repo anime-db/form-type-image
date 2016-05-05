@@ -29,14 +29,15 @@ class ImageType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $entity = $form->getRoot()->getData();
+        $entity = $form->getParent()->getData();
 
-        if (is_callable($view->vars['image_url_callback'])) {
-            $view->vars['image_url'] = call_user_func($view->vars['image_url_callback'], $entity);
+        if (is_callable($options['image_url_callback'])) {
+            $options['image_url'] = call_user_func($options['image_url_callback'], $entity);
         } elseif ($entity instanceof ImageInterface) {
-            $view->vars['image_url'] = $entity->getImageWebPath();
+            $options['image_url'] = $entity->getImageWebPath();
         }
 
+        $view->vars['image_url'] = $options['image_url'];
         $view->vars['attr']['class'] = 'form-image-upload-__input '.$view->vars['attr']['class'];
     }
 
