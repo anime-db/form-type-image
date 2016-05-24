@@ -62,7 +62,7 @@ class FormController extends Controller
         return new JsonResponse([
             'status' => 1,
             'filename' => $filename,
-            'web_path' => $this->getUploader()->getWebPath().$filename
+            'web_path' => $this->getWebPath($filename)
         ]);
     }
 
@@ -98,7 +98,7 @@ class FormController extends Controller
             $filename = $this->getUploader()->upload($file);
             $files[] = [
                 'filename' => $filename,
-                'web_path' => $this->getUploader()->getWebPath().$filename
+                'web_path' => $this->getWebPath($filename)
             ];
         }
 
@@ -180,5 +180,15 @@ class FormController extends Controller
         if ($this->getParameter('anime_db.upload_image.authorized')) {
             parent::denyAccessUnlessGranted($attributes, $object, $message);
         }
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return string
+     */
+    protected function getWebPath($filename)
+    {
+        return $this->getParameter('anime_db.upload_image.web_path') . $filename;
     }
 }

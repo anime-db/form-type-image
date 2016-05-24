@@ -24,18 +24,11 @@ class Uploader
     protected $upload_dir = '';
 
     /**
-     * @var string
-     */
-    protected $web_path = '';
-
-    /**
-     * @param string $web_path
      * @param string $upload_dir
      */
-    public function __construct($upload_dir, $web_path)
+    public function __construct($upload_dir)
     {
         $this->upload_dir = $upload_dir;
-        $this->web_path = $web_path;
     }
 
     /**
@@ -47,13 +40,5 @@ class Uploader
     {
         $file->move($this->upload_dir, $file->getClientOriginalName());
         return $file->getClientOriginalName();
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebPath()
-    {
-        return $this->web_path;
     }
 }

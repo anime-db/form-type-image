@@ -35,4 +35,4 @@ services:
 
     anime_db.uploader:
         class: AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader
-        arguments: [ '%anime_db.upload_image.dir%', '%anime_db.upload_image.web_path%' ]
+        arguments: [ '%anime_db.upload_image.dir%' ]
