@@ -18,8 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration;
 use AnimeDb\Bundle\FormTypeImageBundle\Service\Uploader;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Image;
 use AnimeDb\Bundle\FormTypeImageBundle\Entity\Images;
@@ -31,12 +30,12 @@ use AnimeDb\Bundle\FormTypeImageBundle\Entity\Images;
 class FormController extends Controller
 {
     /**
-     * @Route(
+     * @Configuration\Route(
      *   "/form/upload_image.json",
      *   name="anime_db_form_upload_image",
      *   condition="request.isXmlHttpRequest()"
      * )
-     * @Method({"POST"})
+     * @Configuration\Method({"POST"})
      *
      * @param Request $request
      *
@@ -66,12 +65,12 @@ class FormController extends Controller
     }
 
     /**
-     * @Route(
+     * @Configuration\Route(
      *   "/form/upload_images.json",
      *   name="anime_db_form_upload_images",
      *   condition="request.isXmlHttpRequest()"
      * )
-     * @Method({"POST"})
+     * @Configuration\Method({"POST"})
      *
      * @param Request $request
      *
@@ -108,13 +107,13 @@ class FormController extends Controller
     }
 
     /**
-     * @Route(
+     * @Configuration\Route(
      *   "/form/token/{token_id}/generate.json",
      *   defaults={"token_id" = "form"},
      *   name="anime_db_form_generate_token",
      *   condition="request.isXmlHttpRequest()"
      * )
-     * @Method({"POST"})
+     * @Configuration\Method({"POST"})
      *
      * @param string $token_id
      *
