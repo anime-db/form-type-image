@@ -11,7 +11,7 @@ services:
             - { name: form.type, alias: image_collection }
 
     anime_db.form.type.image_handler:
-        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageHandler
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\ImageHandlerForm
         arguments:
             - '%anime_db.upload_image.constraint.max_size%'
             - '%anime_db.upload_image.constraint.min_width%'
@@ -22,7 +22,7 @@ services:
             - { name: form.type, alias: anime_db_image_handler }
 
     anime_db.form.type.image_collection_handler:
-        class: AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler\ImageCollectionHandler
+        class: AnimeDb\Bundle\FormTypeImageBundle\Form\ImageCollectionHandlerForm
         arguments:
             - '%anime_db.upload_image.constraint.max_size%'
             - '%anime_db.upload_image.constraint.min_width%'

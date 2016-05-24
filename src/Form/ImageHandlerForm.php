@@ -8,7 +8,7 @@
  * @license   http://opensource.org/licenses/MIT
  */
 
-namespace AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler;
+namespace AnimeDb\Bundle\FormTypeImageBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,10 +17,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Image;
 
 /**
- * ImageHandler
- * @package AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler
+ * ImageHandlerForm
+ * @package AnimeDb\Bundle\FormTypeImageBundle\Form
  */
-class ImageHandler extends AbstractType
+class ImageHandlerForm extends AbstractType
 {
     /**
      * @var array
