@@ -465,8 +465,10 @@
         $('div[id^=sonata-ba-field-container-]').on('sonata.add_element', function(event) {
             cont.bind(event.target);
         });
-        $('div[id$=collection__container]').on('sonata-collection-item-added', function(event) {
-            cont.bind(event.target);
+        $('.sonata-collection-add').on('sonata-collection-item-added', function(event) {
+            cont.bind(
+                $(event.target).closest('.sonata-ba-field').find('.sonata-collection-row > .row:last-child')
+            );
         });
     });
 
