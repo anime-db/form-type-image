@@ -51,7 +51,7 @@ class FormController extends Controller
             ->createForm(ImageHandlerForm::class, $image)
             ->handleRequest($request);
 
-        if ($form->isValid()) {
+        if (!$form->isValid()) {
             return new JsonResponse([
                 'status' => 0,
                 'message' => $this->getError($form, 'file', 'word.error.failed_upload_image')
@@ -86,7 +86,7 @@ class FormController extends Controller
             ->createForm(ImageCollectionHandlerForm::class, $image)
             ->handleRequest($request);
 
-        if ($form->isValid()) {
+        if (!$form->isValid()) {
             return new JsonResponse([
                 'status' => 0,
                 'message' => $this->getError($form, 'files', 'word.error.failed_upload_images')
