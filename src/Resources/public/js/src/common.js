@@ -33,7 +33,7 @@
         getController: function() {
             return this._controller;
         },
-        bind: function(target) {
+        bind: function() {
             throw new Error('Must be implemented');
         }
     };
@@ -171,7 +171,7 @@
                 },
                 maxfiles: 1,
                 maxfilesize: 2, // max file size in MB
-                error: function (err, file) {
+                error: function (err) {
                     switch (err) {
                         case 'BrowserNotSupported':
                             that.showError('Старый браузер');
@@ -322,7 +322,7 @@
                 },
                 maxfiles: this._limit,
                 maxfilesize: 2, // max file size in MB
-                error: function (err, file) {
+                error: function (err) {
                     switch (err) {
                         case 'BrowserNotSupported':
                             that.showError('Старый браузер');
