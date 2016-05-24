@@ -167,4 +167,16 @@ class FormController extends Controller
     {
         return $this->get('translator');
     }
+
+    /**
+     * @param mixed $attributes
+     * @param mixed $object
+     * @param string $message
+     */
+    protected function denyAccessUnlessGranted($attributes, $object = null, $message = 'Access Denied.')
+    {
+        if ($this->getParameter('anime_db.upload_image.authorized')) {
+            parent::denyAccessUnlessGranted($attributes, $object, $message);
+        }
+    }
 }

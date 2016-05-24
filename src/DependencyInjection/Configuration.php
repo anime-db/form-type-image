@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
          *
          * anime_db_cache_time_keeper:
          *     web_path: '/upload/'
+         *     authorized: true
          *     constraint:
          *         files_limit: 10
          *         max_size: '2M'
@@ -45,6 +46,10 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('web_path')
                     ->cannotBeEmpty()
                     ->defaultValue('/upload/')
+                ->end()
+                ->booleanNode('authorized')
+                    ->cannotBeEmpty()
+                    ->defaultValue(true)
                 ->end()
                 ->arrayNode('constraint')
                     ->children()

@@ -35,6 +35,7 @@ class AnimeDbFormTypeImageExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('anime_db.upload_image.web_path', $config['web_path']);
+        $container->setParameter('anime_db.upload_image.authorized', $config['authorized']);
         $container->setParameter('anime_db.upload_image.constraint.files_limit', $config['constraint']['files_limit']);
         $container->setParameter('anime_db.upload_image.constraint.max_size', $config['constraint']['max_size']);
         $container->setParameter('anime_db.upload_image.constraint.min_width', $config['constraint']['min_width']);
