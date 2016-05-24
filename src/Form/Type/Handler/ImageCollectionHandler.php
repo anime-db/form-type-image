@@ -11,6 +11,7 @@
 namespace AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\All;
@@ -60,8 +61,9 @@ class ImageCollectionHandler extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('files', 'file', [
+        $builder->add('files', FileType::class, [
             'multiple' => true,
+            'data_class' => null,
             'constraints' => [
                 new Count(['max' => $this->files_limit]),
                 new All([

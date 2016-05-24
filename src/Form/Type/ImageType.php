@@ -11,6 +11,7 @@
 namespace AnimeDb\Bundle\FormTypeImageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,7 +39,7 @@ class ImageType extends AbstractType
         }
 
         $view->vars['image_url'] = $options['image_url'];
-        $view->vars['attr']['class'] = 'form-image-upload-__input '.$view->vars['attr']['class'];
+        $view->vars['attr']['class'] .= ($view->vars['attr']['class'] ? ' ' : '').'form-image-upload-__input';
     }
 
     /**
@@ -60,13 +61,21 @@ class ImageType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
+        return TextType::class;
     }
 
     /**
      * @return string
      */
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBlockPrefix()
     {
         return 'image';
     }

@@ -11,6 +11,7 @@
 namespace AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Handler;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Image;
@@ -50,7 +51,7 @@ class ImageHandler extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('file', 'file', [
+        $builder->add('file', FileType::class, [
             'constraints' => [
                 new NotBlank(),
                 new Image($this->options)

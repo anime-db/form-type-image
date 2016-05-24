@@ -47,6 +47,14 @@ class ImageCollection extends CollectionType
      */
     public function getName()
     {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBlockPrefix()
+    {
         return 'image_collection';
     }
 }
