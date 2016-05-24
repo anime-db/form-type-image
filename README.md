@@ -61,11 +61,11 @@ $form = $this
 From Symfony 3
 
 ```php
-use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\Image;
-use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollection;
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageType;
+use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollectionType;
 
 $form = $this
     ->createFormBuilder()
-    ->add('cover', Image::class)
-    ->add('covers', ImageCollection::class);
+    ->add('cover', ImageType::class)
+    ->add('covers', ImageCollectionType::class);
 ```
