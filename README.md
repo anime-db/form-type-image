@@ -49,17 +49,6 @@ anime_db_cache_time_keeper:
 
 ## Usage
 
-From Symfony 2
-
-```php
-$form = $this
-    ->createFormBuilder()
-    ->add('cover', 'image')
-    ->add('covers', 'image_collection');
-```
-
-From Symfony 3
-
 ```php
 use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageType;
 use AnimeDb\Bundle\FormTypeImageBundle\Form\Type\ImageCollectionType;
