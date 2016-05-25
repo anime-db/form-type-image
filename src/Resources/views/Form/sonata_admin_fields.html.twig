@@ -1,0 +1,42 @@
+{% block image_widget %}
+{% spaceless %}
+    <div
+        class="form-image-upload"
+        data-control="form-image"
+        data-upload-path="{{ path('anime_db_form_upload_image') }}"
+        data-generate-token="{{ path('anime_db_form_generate_token') }}"
+    >
+        <p class="form-image-upload__help">{{ 'word.image.drop_image_here'|trans }}</p>
+        <button type="button" class="form-image-upload__button btn btn-primary glyphicon glyphicon-cloud-upload"></button>
+        <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <input type="file" name="file" class="form-image-upload__file" />
+        <div class="form-image-upload__image-container">
+            <img src="{{ image_url ? image_url : asset('/bundles/animedbformtypeimage/images/dummy.png') }}" class="form-image-upload__image" />
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock image_widget %}
+
+{% block image_collection_widget %}
+{% spaceless %}
+    <div
+        class="form-image-collection"
+        data-control="form-image-collection"
+        data-single-upload-path="{{ path('anime_db_form_upload_image') }}"
+        data-milti-upload-path="{{ path('anime_db_form_upload_images') }}"
+        data-generate-token="{{ path('anime_db_form_generate_token') }}"
+        data-drop-block=".form-image-collection__drop-block"
+        data-container=".form-image-collection__container"
+        data-upload-limit="{{ upload_files_limit }}"
+    >
+        <div class="form-image-collection__drop-block">
+            <button type="button" class="btn btn-primary glyphicon glyphicon-cloud-upload"></button>
+            <span class="form-image-collection__help">{{ 'word.image.drop_image_here'|trans }}</span>
+            <input type="file" name="file[]" class="form-image-collection__file" multiple="multiple">
+        </div>
+
+        {% set attr = attr|merge({'class': 'form-image-collection__container'}) %}
+        {{ block('sonata_type_native_collection_widget') }}
+    </div>
+{% endspaceless %}
+{% endblock image_collection_widget %}
