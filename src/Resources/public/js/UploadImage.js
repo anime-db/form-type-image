@@ -576,7 +576,7 @@
  * @license   http://opensource.org/licenses/MIT
  */
 
-;(function($){
+(function($){
 
     var extend = function(Child, Parent) {
         var F = function() {};
@@ -602,7 +602,7 @@
         getController: function() {
             return this._controller;
         },
-        bind: function(target) {
+        bind: function() {
             throw new Error('Must be implemented');
         }
     };
@@ -740,22 +740,22 @@
                 },
                 maxfiles: 1,
                 maxfilesize: 2, // max file size in MB
-                error: function (err, file) {
+                error: function (err) {
                     switch (err) {
                         case 'BrowserNotSupported':
-                            that.showError('Старый браузер');
+                            that.showError('Browser not supported');
                             break;
                         case 'FileTooLarge':
-                            that.showError('Файл слишком большой');
+                            that.showError('File too large');
                             break;
                         case 'TooManyFiles':
-                            that.showError('Можно загрузить только 1 файл');
+                            that.showError('You can upload only 1 file');
                             break;
                         case 'FileTypeNotAllowed':
-                            that.showError('Некорректный тип файла');
+                            that.showError('Invalid file type');
                             break;
                         default:
-                            that.showError('Не удалось загрузить картинку');
+                            that.showError('Failed to upload image');
                     }
                 },
                 allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
@@ -816,7 +816,7 @@
                     }
                 });
             } else {
-                this.showError('Неправельный тип файла');
+                this.showError('Invalid file type');
             }
             this.file.blur();
         },
@@ -891,22 +891,22 @@
                 },
                 maxfiles: this._limit,
                 maxfilesize: 2, // max file size in MB
-                error: function (err, file) {
+                error: function (err) {
                     switch (err) {
                         case 'BrowserNotSupported':
-                            that.showError('Старый браузер');
+                            that.showError('Browser not supported');
                             break;
                         case 'FileTooLarge':
-                            that.showError('Файлы слишком большие');
+                            that.showError('Files too large');
                             break;
                         case 'TooManyFiles':
-                            that.showError('Можно загрузить только ' + that._limit + ' файлов');
+                            that.showError('You can upload only ' + that._limit + ' files');
                             break;
                         case 'FileTypeNotAllowed':
-                            that.showError('Некорректный тип файлов');
+                            that.showError('Invalid files type');
                             break;
                         default:
-                            that.showError('Не удалось загрузить картинки');
+                            that.showError('Failed to upload images');
                     }
                 },
                 allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
@@ -939,7 +939,7 @@
             }
 
             if (input_file.files.length > this._limit) {
-                this.showError('Можно загрузить только ' + this._limit + ' файлов');
+                this.showError('You can upload only ' + this._limit + ' files');
                 return;
             }
 
@@ -977,11 +977,11 @@
                         that._control.getController().getToken().refreshToken();
                     },
                     error: function () {
-                        that.showError('Не удалось загрузить картинки');
+                        that.showError('Failed to upload images');
                     }
                 });
             } else {
-                this.showError('Неправельный тип файла');
+                this.showError('Invalid files type');
             }
             this._file.blur();
         },
@@ -1034,8 +1034,10 @@
         $('div[id^=sonata-ba-field-container-]').on('sonata.add_element', function(event) {
             cont.bind(event.target);
         });
-        $('div[id$=collection__container]').on('sonata-collection-item-added', function(event) {
-            cont.bind(event.target);
+        $('.sonata-collection-add').on('sonata-collection-item-added', function(event) {
+            cont.bind(
+                $(event.target).closest('.sonata-ba-field').find('.sonata-collection-row > .row:last-child')
+            );
         });
     });
 
