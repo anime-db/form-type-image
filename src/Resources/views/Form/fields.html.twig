@@ -36,7 +36,7 @@
         </div>
 
         {% set attr = attr|merge({'class': 'form-image-collection__container'}) %}
-        {#{ block('sonata_type_native_collection_widget') }#} {# TODO no sonata boundle #}
+        {{ block('collection_widget') }}
     </div>
 {% endspaceless %}
 {% endblock image_collection_widget %}

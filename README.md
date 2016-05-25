@@ -48,6 +48,22 @@ anime_db_cache_time_keeper:
         max_height: 0    # Maximum image height
 ```
 
+Add form template
+
+```yml
+twig:
+    form:
+        resources: [ 'AnimeDbFormTypeImageBundle:Form:fields.html.twig' ]
+```
+
+Add form templates for [SonataDoctrineORMAdminBundle](https://github.com/sonata-project/SonataDoctrineORMAdminBundle)
+
+```yml
+sonata_doctrine_orm_admin:
+    templates:
+        form: [ 'AnimeDbFormTypeImageBundle:Form:sonata_admin_fields.html.twig' ]
+```
+
 ## Usage
 
 ```php
