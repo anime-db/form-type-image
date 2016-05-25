@@ -42,5 +42,8 @@
     "require-dev": {
         "sensio/framework-extra-bundle": "3.0.*"
     },
-    "minimum-stability": "dev"
+    "suggest" : {
+        "sonata-project/admin-bundle": "Allows upload images in SonataAdminBundle"
+    },
+    "minimum-stability": "stable"
 }
